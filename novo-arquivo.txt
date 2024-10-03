@@ -1,3 +1,4 @@
 arquivo da branch
 
 teste conflito da branch
+teste conflito 2
