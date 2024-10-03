@@ -1,1 +1,3 @@
 arquivo da branch
+
+teste conflito 2
