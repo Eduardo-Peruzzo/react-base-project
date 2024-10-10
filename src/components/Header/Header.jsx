@@ -12,6 +12,8 @@ const Header = () => (
     ? <Link to="/logout">Logout</Link>
     : <Link to="/login">Login</Link>
     }
+
+    <Link to="/sobre-nos">Sobre nós</Link>
     
   </Top>
 )
