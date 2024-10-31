@@ -1,22 +1,25 @@
 import { useParams } from "react-router-dom";
 import FotoCard from "../components/FotoCard/FotoCard";
 import ListContainer from "../components/ListContainer/ListContainer";
-import dados from "../data/computadores.json";
+import dadosBrutos from "../data/computadores.json";
 import Protegida from "./Protegida";
+import { useEffect, useState } from "react";
+import Base from "./Base";
 
 const Fotos = () => {
 
-  const {id} = useParams();
+  const [dados, setDados] = useState(dadosBrutos);
 
-  const dadosFiltrados = dados.filter(
-    (elemento) => (elemento.id === parseInt(id) || !id)
-    
-  )
+  const filtro = (entrada) => setDados(dadosBrutos.filter(
+    (elemento) => elemento.nome.includes(entrada) || elemento.link_original.includes(entrada)
+  ))
 
   return (
-      <Protegida>
+      <Base>
+      <input type="text" onChange={ (evento) => filtro(evento.target.value)} placeholder="Pesquisar..."/>
+
         <ListContainer>
-          {dadosFiltrados.map(
+          {dados.map(
             (el, index) => (
               <FotoCard 
                 key={index}
@@ -28,7 +31,7 @@ const Fotos = () => {
               )
           )}
           </ListContainer>
-      </Protegida>      
+      </Base>      
  )
 };
 
